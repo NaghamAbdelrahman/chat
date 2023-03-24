@@ -28,12 +28,15 @@ class _ChatThreadState extends BaseState<ChatThread, ChatViewModel>
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    room = ModalRoute.of(context)?.settings.arguments as Room;
-    viewModel.room = room;
-    var userProvider = Provider.of<UserProvider>(context);
-    viewModel.user = userProvider.user;
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      room = ModalRoute.of(context)?.settings.arguments as Room;
+      viewModel.room = room;
+      var userProvider = Provider.of<UserProvider>(context);
+      viewModel.user = userProvider.user;
+    });
   }
 
   @override

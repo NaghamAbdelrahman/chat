@@ -16,9 +16,6 @@ class MessagesFireBaseDataSourceImpl implements MessagesFireBaseDataSource {
 
   @override
   Stream<QuerySnapshot<Message>> getMessages(String roomId) {
-    return dataBase
-        .getMessageCollection(roomId)
-        .orderBy('dateTime', descending: true)
-        .snapshots();
+    return dataBase.getMessages(roomId);
   }
 }

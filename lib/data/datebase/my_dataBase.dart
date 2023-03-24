@@ -62,4 +62,10 @@ class MyDataBase {
     message.id = docRef.id;
     return docRef.set(message);
   }
+
+  Stream<QuerySnapshot<Message>> getMessages(String roomId) {
+    return getMessageCollection(roomId)
+        .orderBy('dateTime', descending: true)
+        .snapshots();
+  }
 }
